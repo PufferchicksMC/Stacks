@@ -71,3 +71,6 @@ networks:
   proxy:
     name: proxy_default
     external: true
+
+volumes:
+  tinyauth-data: null
