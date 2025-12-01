@@ -17,8 +17,12 @@ services:
         target: /app/bluemap
         read_only: true
     labels:
-      - traefik.http.routers.create-backup.rule=Host(`backup.off-topic.chat`) && PathPrefix(`/create`)
+      - traefik.http.routers.create-bluemap.rule=Host(`bluemap.off-topic.chat`) && PathPrefix(`create`)
+      - traefik.http.services.create-bluemap.loadbalancer.server.url=http://create-nginx:80
+      - traefik.http.routers.create-backup.rule=Host(`backup.off-topic.chat`) && PathPrefix(`create`)
       - traefik.http.services.create-backup.loadbalancer.server.url=http://create-nginx:81
+      - traefik.http.routers.create-modpack.rule=Host(`modpack.off-topic.chat`) && PathPrefix(`create`)
+      - traefik.http.services.create-modpack.loadbalancer.server.url=http://create-nginx:82
   db:
     image: mariadb:11
     restart: unless-stopped
