@@ -48,7 +48,6 @@ services:
         target: /data
     environment:
       APP_URL: https://tinyauth.off-topic.chat
-      COOKIE_SECURE: "true"
       PROVIDERS_GITHUB_CLIENT_ID: ${TINYAUTH_GITHUB_CLIENT_ID}
       PROVIDERS_GITHUB_CLIENT_SECRET: ${TINYAUTH_GITHUB_CLIENT_SECRET}
       OAUTH_AUTO_REDIRECT: github
