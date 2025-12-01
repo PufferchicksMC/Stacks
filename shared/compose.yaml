@@ -56,8 +56,8 @@ services:
     labels:
       traefik.http.routers.mc-auth.rule: Host(`auth.off-topic.chat`)
       traefik.http.routers.mc-auth.service: mc-auth
-      traefik.http.services.mc-auth.loadbalancer.server.url: http://tinyauth:3000
-      traefik.http.middlewares.mc-auth.forwardauth.address: http://tinyauth:3000/api/auth/traefik
+      traefik.http.services.mc-auth.loadbalancer.server.url: http://mc-auth:3000
+      traefik.http.middlewares.mc-auth.forwardauth.address: http://mc-auth:3000/api/auth/traefik
 
 networks:
   default:
