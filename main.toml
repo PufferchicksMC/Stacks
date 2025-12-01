@@ -1,1 +1,10 @@
-## Add resources to get started
+[[stack]]
+name = "create-smp"
+tags = ["mc-server"]
+[stack.config]
+server = "ovh-cloud"
+poll_for_updates = true
+auto_update = true
+auto_update_all_services = true
+linked_repo = "minecraft"
+run_directory = "ovh-cloud/minecraft/create-smp"
