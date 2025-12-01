@@ -1,4 +1,16 @@
 services:
+  mc-router:
+    image: itzg/mc-router
+    container_name: mc-router
+    restart: unless-stopped
+    networks:
+      - default
+      - proxy
+    ports:
+      - name: minecraft
+        target: 25565
+        published: 25565
+    
   nginx:
     image: webdevops/php-nginx:8.4-alpine
     restart: unless-stopped
