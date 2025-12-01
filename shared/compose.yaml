@@ -1,16 +1,46 @@
-## Add your compose file here
 services:
-  hello_world:
-    image: hello-world
-    # networks:
-    #   - default
-    # ports:
-    #   - 3000:3000
-    # volumes:
-    #   - data:/data
+  nginx:
+    image: webdevops/php-nginx:8.4-alpine
+    restart: unless-stopped
+    networks:
+      default:
+      proxy:
+        aliases:
+          - create-nginx
+    volumes:
+      - type: bind
+        source: ./vhost.conf
+        target: /opt/docker/etc/nginx/vhost.conf
+        read_only: true
+      - type: bind
+        source: /opt/minecraft/servers/create/bluemap/web
+        target: /app/bluemap
+        read_only: true
+    labels:
+      - traefik.http.routers.create-bluemap.rule=Host(`bluemap.off-topic.chat`) && PathPrefix(`create`)
+      - traefik.http.services.create-bluemap.loadbalancer.server.url=http://create-nginx:80
+      - traefik.http.routers.create-backup.rule=Host(`backup.off-topic.chat`) && PathPrefix(`create`)
+      - traefik.http.services.create-backup.loadbalancer.server.url=http://create-nginx:81
+      - traefik.http.routers.create-modpack.rule=Host(`modpack.off-topic.chat`) && PathPrefix(`create`)
+      - traefik.http.services.create-modpack.loadbalancer.server.url=http://create-nginx:82
+  db:
+    image: mariadb:11
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: db
+        target: /var/lib/mysql
+    environment:
+      MARIADB_RANDOM_ROOT_PASSWORD: 1
+      MARIADB_DATABASE: ${DB_DATABASE}
+      MARIADB_USER: ${DB_USERNAME}
+      MARIADB_PASSWORD: ${DB_PASSWORD}
 
-# networks:
-#   default: {}
+volumes:
+  db: null
 
-# volumes:
-#   data:
+networks:
+  default:
+  proxy:
+    name: proxy_default
+    external: true
