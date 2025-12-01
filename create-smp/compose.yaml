@@ -16,6 +16,9 @@ services:
         source: /opt/minecraft/servers/create/bluemap/web
         target: /app/bluemap
         read_only: true
+    labels:
+      - traefik.http.routers.create-backup.rule=Host(`backup.off-topic.chat`) && PathPrefix(`/create`)
+      - traefik.http.services.create-backup.loadbalancer.server.url=http://create-nginx:81
   db:
     image: mariadb:11
     restart: unless-stopped
