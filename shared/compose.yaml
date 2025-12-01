@@ -27,6 +27,14 @@ services:
         source: ./vhost.conf
         target: /opt/docker/etc/nginx/vhost.conf
         read_only: true
+      - type: bind
+        source: /opt/minecraft/backups
+        target: /app/backup
+        read_only: true
+      - type: bind
+        source: /opt/minecraft/modpacks
+        target: /app/modpack
+        read_only: true
     labels:
       traefik.http.routers.mc-backup.rule: Host(`backup.off-topic.chat`)
       traefik.http.routers.mc-backup.service: mc-backup
