@@ -17,21 +17,6 @@ services:
       - traefik.http.services.mc-backup.loadbalancer.server.url=http://mc-nginx:81
       - traefik.http.routers.mc-modpack.rule=Host(`modpack.off-topic.chat`)
       - traefik.http.services.mc-modpack.loadbalancer.server.url=http://mc-nginx:82
-  db:
-    image: mariadb:11
-    restart: unless-stopped
-    volumes:
-      - type: volume
-        source: db
-        target: /var/lib/mysql
-    environment:
-      MARIADB_RANDOM_ROOT_PASSWORD: 1
-      MARIADB_DATABASE: ${DB_DATABASE}
-      MARIADB_USER: ${DB_USERNAME}
-      MARIADB_PASSWORD: ${DB_PASSWORD}
-
-volumes:
-  db: null
 
 networks:
   default:
