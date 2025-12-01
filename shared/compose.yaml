@@ -10,6 +10,8 @@ services:
       - name: minecraft
         target: 25565
         published: 25565
+    environment:
+      DOCKER_SOCKET: tcp://socket-proxy:2375
     
   nginx:
     image: webdevops/php-nginx:8.4-alpine
