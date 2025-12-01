@@ -1,4 +1,21 @@
 services:
+  nginx:
+    image: webdevops/php-nginx:8.4-alpine
+    restart: unless-stopped
+    networks:
+      default:
+      proxy:
+        aliases:
+          - create-nginx
+    volumes:
+      - type: bind
+        source: ./vhost.conf
+        target: /opt/docker/etc/nginx/vhost.conf
+        read_only: true
+      - type: bind
+        source: /opt/minecraft/servers/create/bluemap/web
+        target: /app/bluemap
+        read_only: true
   bluemap-db:
     image: mariadb:11
     restart: unless-stopped
@@ -14,3 +31,9 @@ services:
 
 volumes:
   bluemap-db: null
+
+networks:
+  default:
+  proxy:
+    name: proxy_default
+    external: true
