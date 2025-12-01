@@ -16,12 +16,12 @@ services:
         source: /opt/minecraft/servers/create/bluemap/web
         target: /app/bluemap
         read_only: true
-  bluemap-db:
+  db:
     image: mariadb:11
     restart: unless-stopped
     volumes:
       - type: volume
-        source: bluemap-db
+        source: db
         target: /var/lib/mysql
     environment:
       MARIADB_ROOT_PASSWORD: ${BM_ROOT_PASSWORD}
@@ -30,7 +30,7 @@ services:
       MARIADB_PASSWORD: ${BM_PASSWORD}
 
 volumes:
-  bluemap-db: null
+  db: null
 
 networks:
   default:
