@@ -1,16 +1,16 @@
-## Add your compose file here
 services:
-  hello_world:
-    image: hello-world
-    # networks:
-    #   - default
-    # ports:
-    #   - 3000:3000
-    # volumes:
-    #   - data:/data
+  bluemap-db:
+    image: mariadb:11
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: bluemap-db
+        target: /var/lib/mysql
+    environment:
+      MARIADB_ROOT_PASSWORD: ${BM_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${BM_DATABASE}
+      MARIADB_USER: ${BM_USER}
+      MARIADB_PASSWORD: ${BM_PASSWORD}
 
-# networks:
-#   default: {}
-
-# volumes:
-#   data:
+volumes:
+  bluemap-db: null
