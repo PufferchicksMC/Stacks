@@ -12,6 +12,7 @@ services:
         published: 25565
     environment:
       DOCKER_SOCKET: tcp://socket-proxy:2375
+      IN_DOCKER: "true"
     
   nginx:
     image: webdevops/php-nginx:8.4-alpine
