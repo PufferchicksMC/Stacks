@@ -32,6 +32,22 @@ services:
       - traefik.http.services.mc-backup.loadbalancer.server.url=http://mc-nginx:81
       - traefik.http.routers.mc-modpack.rule=Host(`modpack.off-topic.chat`)
       - traefik.http.services.mc-modpack.loadbalancer.server.url=http://mc-nginx:82
+  
+  tinyauth:
+    image: ghcr.io/steveiliop56/tinyauth:v4
+    container_name: mc-auth
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: tinyauth-data
+        target: /data
+    environment:
+      APP_URL: https://tinyauth.off-topic.chat
+      COOKIE_SECURE: "true"
+      PROVIDERS_GITHUB_CLIENT_ID: ${TINYAUTH_GITHUB_CLIENT_ID}
+      PROVIDERS_GITHUB_CLIENT_SECRET: ${TINYAUTH_GITHUB_CLIENT_SECRET}
+      OAUTH_AUTO_REDIRECT: github
+      OAUTH_WHITELIST: ${TINYAUTH_OAUTH_WHITELIST}
 
 networks:
   default:
