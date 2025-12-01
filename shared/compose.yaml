@@ -28,15 +28,20 @@ services:
         target: /opt/docker/etc/nginx/vhost.conf
         read_only: true
     labels:
-      - traefik.http.routers.mc-backup.rule=Host(`backup.off-topic.chat`)
-      - traefik.http.services.mc-backup.loadbalancer.server.url=http://mc-nginx:81
-      - traefik.http.routers.mc-modpack.rule=Host(`modpack.off-topic.chat`)
-      - traefik.http.services.mc-modpack.loadbalancer.server.url=http://mc-nginx:82
+      traefik.http.routers.mc-backup.rule: Host(`backup.off-topic.chat`)
+      traefik.http.routers.mc-backup.service: mc-backup
+      traefik.http.services.mc-backup.loadbalancer.server.url: http://mc-nginx:81
+      traefik.http.routers.mc-modpack.rule: Host(`modpack.off-topic.chat`)
+      traefik.http.routers.mc-modpack.service: mc-modpack
+      traefik.http.services.mc-modpack.loadbalancer.server.url: http://mc-nginx:82
   
   tinyauth:
     image: ghcr.io/steveiliop56/tinyauth:v4
-    container_name: mc-auth
     restart: unless-stopped
+    networks:
+      proxy:
+        aliases:
+          - mc-auth
     volumes:
       - type: volume
         source: tinyauth-data
@@ -48,6 +53,11 @@ services:
       PROVIDERS_GITHUB_CLIENT_SECRET: ${TINYAUTH_GITHUB_CLIENT_SECRET}
       OAUTH_AUTO_REDIRECT: github
       OAUTH_WHITELIST: ${TINYAUTH_OAUTH_WHITELIST}
+    labels:
+      traefik.http.routers.mc-auth.rule: Host(`auth.off-topic.chat`)
+      traefik.http.routers.mc-auth.service: mc-auth
+      traefik.http.services.mc-auth.loadbalancer.server.url: http://tinyauth:3000
+      traefik.http.middlewares.mc-auth.forwardauth.address: http://tinyauth:3000/api/auth/traefik
 
 networks:
   default:
