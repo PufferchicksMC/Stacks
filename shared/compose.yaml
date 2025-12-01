@@ -6,23 +6,17 @@ services:
       default:
       proxy:
         aliases:
-          - create-nginx
+          - mc-nginx
     volumes:
       - type: bind
         source: ./vhost.conf
         target: /opt/docker/etc/nginx/vhost.conf
         read_only: true
-      - type: bind
-        source: /opt/minecraft/servers/create/bluemap/web
-        target: /app/bluemap
-        read_only: true
     labels:
-      - traefik.http.routers.create-bluemap.rule=Host(`bluemap.off-topic.chat`) && PathPrefix(`create`)
-      - traefik.http.services.create-bluemap.loadbalancer.server.url=http://create-nginx:80
-      - traefik.http.routers.create-backup.rule=Host(`backup.off-topic.chat`) && PathPrefix(`create`)
-      - traefik.http.services.create-backup.loadbalancer.server.url=http://create-nginx:81
-      - traefik.http.routers.create-modpack.rule=Host(`modpack.off-topic.chat`) && PathPrefix(`create`)
-      - traefik.http.services.create-modpack.loadbalancer.server.url=http://create-nginx:82
+      - traefik.http.routers.mc-backup.rule=Host(`backup.off-topic.chat`)
+      - traefik.http.services.mc-backup.loadbalancer.server.url=http://mc-nginx:81
+      - traefik.http.routers.mc-modpack.rule=Host(`modpack.off-topic.chat`)
+      - traefik.http.services.mc-modpack.loadbalancer.server.url=http://mc-nginx:82
   db:
     image: mariadb:11
     restart: unless-stopped
