@@ -62,6 +62,7 @@ services:
       OAUTH_AUTO_REDIRECT: github
       OAUTH_WHITELIST: ${TINYAUTH_OAUTH_WHITELIST}
     labels:
+      traefik.enable: 'true'
       traefik.http.routers.mc-auth.rule: Host(`auth.off-topic.chat`)
       traefik.http.routers.mc-auth.service: mc-auth
       traefik.http.services.mc-auth.loadbalancer.server.url: http://mc-auth:3000
