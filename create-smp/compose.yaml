@@ -39,5 +39,5 @@ volumes:
 networks:
   default:
   proxy:
-    name: proxy_default
+    name: ovh-proxy_default
     external: true
