@@ -3,8 +3,43 @@ name = "create-smp"
 tags = ["mc-server"]
 [stack.config]
 server = "ovh-cloud"
+links = [
+  "https://bluemap.off-topic.chat"
+]
 poll_for_updates = true
 auto_update = true
 auto_update_all_services = true
 linked_repo = "minecraft"
-run_directory = "ovh-cloud/minecraft/create-smp"
+run_directory = "create-smp"
+config_files = [{ path = "vhost.conf" }]
+environment = """
+DB_DATABASE=[[CREATE_DB_DATABASE]]
+DB_USERNAME=[[CREATE_DB_USERNAME]]
+DB_PASSWORD=[[CREATE_DB_PASSWORD]]
+"""
+
+##
+
+[[stack]]
+name = "minecraft-shared"
+tags = ["mc-server"]
+[stack.config]
+server = "ovh-cloud"
+links = [
+  "https://backup.off-topic.chat",
+  "https://modpack.off-topic.chat"
+]
+poll_for_updates = true
+auto_update = true
+auto_update_all_services = true
+linked_repo = "minecraft"
+run_directory = "shared"
+config_files = [
+  { path = "vhost.conf", services = ["nginx"], requires = "Redeploy" }
+]
+environment = """
+TINYAUTH_SECRET=[[TINYAUTH_SECRET]]
+TINYAUTH_GITHUB_CLIENT_ID=[[TINYAUTH_GITHUB_CLIENT_ID]]
+TINYAUTH_GITHUB_CLIENT_SECRET=[[TINYAUTH_GITHUB_CLIENT_SECRET]]
+TINYAUTH_OAUTH_WHITELIST=[[TINYAUTH_OAUTH_WHITELIST]]
+"""
