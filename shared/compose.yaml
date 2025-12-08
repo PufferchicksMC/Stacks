@@ -36,7 +36,7 @@ services:
         target: /app/modpack
         read_only: true
     labels:
-      traefik.enable: 'true'
+      traefik.enable: "true"
       traefik.http.routers.mc-backup.rule: Host(`backup.off-topic.chat`)
       traefik.http.routers.mc-backup.service: mc-backup
       traefik.http.services.mc-backup.loadbalancer.server.url: http://mc-nginx:81
@@ -62,7 +62,7 @@ services:
       OAUTH_AUTO_REDIRECT: github
       OAUTH_WHITELIST: ${TINYAUTH_OAUTH_WHITELIST}
     labels:
-      traefik.enable: 'true'
+      traefik.enable: "true"
       traefik.http.routers.mc-auth.rule: Host(`auth.off-topic.chat`)
       traefik.http.routers.mc-auth.service: mc-auth
       traefik.http.services.mc-auth.loadbalancer.server.url: http://mc-auth:3000
