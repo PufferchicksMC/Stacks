@@ -17,8 +17,9 @@ services:
         target: /app/bluemap
         read_only: true
     labels:
-      - traefik.http.routers.create-bluemap.rule=Host(`bluemap.off-topic.chat`) && PathPrefix(`create`)
-      - traefik.http.services.create-bluemap.loadbalancer.server.url=http://create-nginx:80
+      traefik.http.routers.create-bluemap.rule: Host(`bluemap.off-topic.chat`) && PathPrefix(`create`)
+      traefik.http.services.create-bluemap.loadbalancer.server.url: http://create-nginx:80
+
   db:
     image: mariadb:11
     restart: unless-stopped
