@@ -33,13 +33,48 @@ poll_for_updates = true
 auto_update = true
 auto_update_all_services = true
 linked_repo = "minecraft"
-run_directory = "shared"
+run_directory = "minecraft-shared"
 config_files = [
   { path = "vhost.conf", services = ["nginx"], requires = "Redeploy" }
 ]
+pre_deploy.command = """
+export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+
+STACK_NAME="$(basename "$PWD")"
+CLIENT_ID="[[INFISICAL_CLIENT_ID]]"
+CLIENT_SECRET="[[INFISICAL_CLIENT_SECRET]]"
+DOMAIN="[[INFISICAL_DOMAIN]]"
+PROJECT_ID="[[INFISICAL_PROJECT_ID]]"
+ENV="prod"
+
+INFISICAL_TOKEN=$( \
+  infisical login \
+    --method=universal-auth \
+    --client-id="$CLIENT_ID" \
+    --client-secret="$CLIENT_SECRET" \
+    --domain="$DOMAIN" \
+    --silent --plain)
+
+touch .env
+cp .env .env.original
+echo >> .env
+infisical export \
+  --format=dotenv \
+  --domain="$DOMAIN" \
+  --token="$INFISICAL_TOKEN" \
+  --projectId="$PROJECT_ID" \
+  --env="$ENV" \
+  --path="/$STACK_NAME" \
+>> .env
+
+chmod 600 .env
+echo ".env updated"
+"""
+post_deploy.command = """
+rm -f .env
+mv .env.original .env
+echo ".env restored"
+"""
 environment = """
-TINYAUTH_SECRET=[[TINYAUTH_SECRET]]
-TINYAUTH_GITHUB_CLIENT_ID=[[TINYAUTH_GITHUB_CLIENT_ID]]
-TINYAUTH_GITHUB_CLIENT_SECRET=[[TINYAUTH_GITHUB_CLIENT_SECRET]]
-TINYAUTH_OAUTH_WHITELIST=[[TINYAUTH_OAUTH_WHITELIST]]
+  # VARIABLE = value
 """
