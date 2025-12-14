@@ -77,7 +77,9 @@ services:
     labels:
       traefik.enable: "true"
       traefik.http.routers.craftoria-dev-bluemap.rule: Host(`bluemap.off-topic.chat`) && PathPrefix(`/craftoria-dev`)
+      traefik.http.routers.craftoria-dev-bluemap.middlewares: craftoria-dev-stripprefix
       traefik.http.services.craftoria-dev-bluemap.loadbalancer.server.url: http://bm-craftoria-dev:80
+      traefik.http.middlewares.craftoria-dev-stripprefix.stripprefix.prefixes: /craftoria-dev
 
   db:
     image: mariadb:11
