@@ -46,7 +46,7 @@ services:
       MODRINTH_PROJECTS: "@/extras/modrinth-mods.txt"
       MODRINTH_DOWNLOAD_DEPENDENCIES: required
     labels:
-
+      mc-router.host: craftoria-dev.off-topic.chat
 
   nginx:
     image: webdevops/php-nginx:8.4-alpine
