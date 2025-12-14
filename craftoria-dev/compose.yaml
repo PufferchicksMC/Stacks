@@ -9,6 +9,9 @@ services:
     networks:
       - default
       - proxy
+    env_file:
+      - path: ./.env
+        required: true
 
   nginx:
     image: webdevops/php-nginx:8.4-alpine
