@@ -31,10 +31,6 @@ services:
         source: ./extras
         target: /extras
         read_only: true
-      - type: bind
-        source: ./bluemap/web/sql.php
-        target: /data/bluemap/web/sql.php
-        read_only: true
     env_file:
       - path: ./.env
         required: true
