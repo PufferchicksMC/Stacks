@@ -32,6 +32,11 @@ services:
       RCON_CMDS_STARTUP: |
         gamerule doFireTick false
         gamerule playerSleepingPercentage 0
+      MODRINTH_PROJECTS: |
+        create-additional-logistics
+        echo-of-death
+        freeze-block
+        sculk-muffler
 
   nginx:
     image: webdevops/php-nginx:8.4-alpine
