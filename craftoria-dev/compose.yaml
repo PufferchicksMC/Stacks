@@ -10,8 +10,10 @@ services:
       - nginx
       - db
     networks:
-      - default
-      - proxy
+      default:
+      proxy:
+        aliases:
+          - mc-craftoria-dev
     volumes:
       - type: bind
         source: /opt/minecraft/servers/craftoria-dev
@@ -49,7 +51,7 @@ services:
       default:
       proxy:
         aliases:
-          - craftoria-dev-nginx
+          - bm-craftoria-dev
     volumes:
       - type: bind
         source: ./vhost.conf
@@ -61,7 +63,7 @@ services:
         read_only: true
     labels:
       traefik.http.routers.craftoria-dev-bluemap.rule: Host(`bluemap.off-topic.chat`) && PathPrefix(`craftoria-dev`)
-      traefik.http.services.craftoria-dev-bluemap.loadbalancer.server.url: http://craftoria-dev-nginx:80
+      traefik.http.services.craftoria-dev-bluemap.loadbalancer.server.url: http://bm-craftoria-dev:80
 
   db:
     image: mariadb:11
