@@ -39,6 +39,7 @@ services:
         create-additional-logistics:mbCi448E
         echo-of-death:HdyZLCDq
         freeze-block:WfL7dS4O
+        luckperms:dKAPoPGd
         sculk-muffler:pBOUMY5q
 
   nginx:
