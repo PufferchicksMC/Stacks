@@ -18,6 +18,10 @@ services:
       - type: bind
         source: /opt/minecraft/servers/craftoria-dev
         target: /data
+      - type: bind
+        source: ./extras/modrinth-mods.txt
+        target: /extras/modrinth-mods.txt
+        read_only: true
     env_file:
       - path: ./.env
         required: true
@@ -34,16 +38,7 @@ services:
       RCON_CMDS_STARTUP: |
         gamerule doFireTick false
         gamerule playerSleepingPercentage 0
-      MODRINTH_PROJECTS: |
-        bluemap:8iJcPOHJ
-        chunky:LuFhm4eU
-        chunkyborder:Pj0tqKnE
-        create-additional-logistics:mbCi448E
-        echo-of-death:HdyZLCDq
-        freeze-block:WfL7dS4O
-        luckperms:dKAPoPGd
-        sculk-muffler:pBOUMY5q
-        sdlink:VADIv5pg
+      MODRINTH_PROJECTS: "@/extras/modrinth-mods.txt"
 
   nginx:
     image: webdevops/php-nginx:8.4-alpine
