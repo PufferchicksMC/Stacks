@@ -20,9 +20,8 @@ services:
       - path: ./.env
         required: true
     environment:
-      MOD_PLATFORM: AUTO_CURSEFORGE
-      CF_SLUG: craftoria
-      CF_FILENAME_MATCHER: 1.29.0
+      TYPE: Neoforge
+      NEOFORGE_VERSION: 21.1.215
       MOTD: |
         A %TYPE% server on %VERSION%
         running %MODPACK_NAME% %MODPACK_VERSION%
