@@ -33,6 +33,9 @@ services:
         gamerule doFireTick false
         gamerule playerSleepingPercentage 0
       MODRINTH_PROJECTS: |
+        bluemap:8iJcPOHJ
+        chunky:LuFhm4eU
+        chunkyborder:Pj0tqKnE
         create-additional-logistics:mbCi448E
         echo-of-death:HdyZLCDq
         freeze-block:WfL7dS4O
