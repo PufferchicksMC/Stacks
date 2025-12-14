@@ -3,12 +3,18 @@ services:
     container_name: craftoria-dev
     image: itzg/minecraft-server
     restart: unless-stopped
+    tty: true
+    stdin_open: true
     depends_on:
       - nginx
       - db
     networks:
       - default
       - proxy
+    volumes:
+      - type: bind
+        source: /opt/minecraft/servers/craftoria-dev
+        target: /data
     env_file:
       - path: ./.env
         required: true
