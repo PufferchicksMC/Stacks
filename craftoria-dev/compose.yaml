@@ -19,8 +19,8 @@ services:
         source: /opt/minecraft/servers/craftoria-dev
         target: /data
       - type: bind
-        source: ./extras/modrinth-mods.txt
-        target: /extras/modrinth-mods.txt
+        source: ./extras
+        target: /extras
         read_only: true
     env_file:
       - path: ./.env
