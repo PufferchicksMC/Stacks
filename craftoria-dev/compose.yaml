@@ -23,6 +23,8 @@ services:
       TYPE: Neoforge
       NEOFORGE_VERSION: 21.1.215
       MODE: creative
+      SEED: 123
+      MEMORY: 12G
       MOTD: |
         A %TYPE% server on %VERSION%
         running %MODPACK_NAME% %MODPACK_VERSION%
