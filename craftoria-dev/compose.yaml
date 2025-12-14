@@ -17,7 +17,7 @@ services:
     ports:
       - name: simplevoicechat
         target: 24454
-        published: 24454
+        published: 24455
         protocol: udp
     volumes:
       - type: bind
