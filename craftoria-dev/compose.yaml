@@ -1,8 +1,9 @@
 services:
   mc:
     container_name: craftoria-dev
-    image: itzg/minecraft-server
+    image: itzg/minecraft-server:java25-graalvm
     restart: unless-stopped
+    user: ${UID}:${GID}
     tty: true
     stdin_open: true
     depends_on:
