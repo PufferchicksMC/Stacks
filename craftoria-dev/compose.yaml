@@ -74,9 +74,9 @@ services:
         target: /var/lib/mysql
     environment:
       MARIADB_RANDOM_ROOT_PASSWORD: 1
-      MARIADB_DATABASE: ${DB_DATABASE}
-      MARIADB_USER: ${DB_USERNAME}
-      MARIADB_PASSWORD: ${DB_PASSWORD}
+      MARIADB_DATABASE: ${CFG_DB_NAME}
+      MARIADB_USER: ${CFG_DB_USER}
+      MARIADB_PASSWORD: ${CFG_DB_PASSWORD}
 
 volumes:
   db: null
