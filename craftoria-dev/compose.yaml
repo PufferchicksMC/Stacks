@@ -39,6 +39,7 @@ services:
         gamerule doFireTick false
         gamerule playerSleepingPercentage 0
       MODRINTH_PROJECTS: "@/extras/modrinth-mods.txt"
+      MODRINTH_DOWNLOAD_DEPENDENCIES: required
 
   nginx:
     image: webdevops/php-nginx:8.4-alpine
