@@ -20,6 +20,7 @@ services:
       - path: ./.env
         required: true
     environment:
+      VERSION: 1.21.1
       TYPE: Neoforge
       NEOFORGE_VERSION: 21.1.215
       MODE: creative
