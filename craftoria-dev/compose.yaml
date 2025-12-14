@@ -18,6 +18,7 @@ services:
       - name: simplevoicechat
         target: 24454
         published: 24454
+        protocol: udp
     volumes:
       - type: bind
         source: /opt/minecraft/servers/craftoria-dev
