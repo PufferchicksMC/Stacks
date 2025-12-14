@@ -1,4 +1,15 @@
 services:
+  mc:
+    container_name: craftoria-dev
+    image: itzg/minecraft-server
+    restart: unless-stopped
+    depends_on:
+      - nginx
+      - db
+    networks:
+      - default
+      - proxy
+
   nginx:
     image: webdevops/php-nginx:8.4-alpine
     restart: unless-stopped
@@ -6,19 +17,19 @@ services:
       default:
       proxy:
         aliases:
-          - create-nginx
+          - craftoria-dev-nginx
     volumes:
       - type: bind
         source: ./vhost.conf
         target: /opt/docker/etc/nginx/vhost.conf
         read_only: true
       - type: bind
-        source: /opt/minecraft/servers/create/bluemap/web
+        source: /opt/minecraft/servers/craftoria-dev/bluemap/web
         target: /app/bluemap
         read_only: true
     labels:
-      traefik.http.routers.create-bluemap.rule: Host(`bluemap.off-topic.chat`) && PathPrefix(`create`)
-      traefik.http.services.create-bluemap.loadbalancer.server.url: http://create-nginx:80
+      traefik.http.routers.craftoria-dev-bluemap.rule: Host(`bluemap.off-topic.chat`) && PathPrefix(`craftoria-dev`)
+      traefik.http.services.craftoria-dev-bluemap.loadbalancer.server.url: http://craftoria-dev-nginx:80
 
   db:
     image: mariadb:11
