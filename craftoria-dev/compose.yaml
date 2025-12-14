@@ -24,6 +24,10 @@ services:
         source: /opt/minecraft/servers/craftoria-dev
         target: /data
       - type: bind
+        source: ./config
+        target: /config
+        read_only: true
+      - type: bind
         source: ./extras
         target: /extras
         read_only: true
