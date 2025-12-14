@@ -53,9 +53,6 @@ services:
         gamerule playerSleepingPercentage 0
       MODRINTH_PROJECTS: "@/extras/modrinth-mods.txt"
       MODRINTH_DOWNLOAD_DEPENDENCIES: required
-      APPLY_EXTRA_FILES: |
-        bluemap/mariadb-java-client-3.5.4.jar<https://share.lxnq.to/-XWzKV9xmg9/mariadb-java-client-3.5.4.jar
-      SYNC_SKIP_NEWER_IN_DESTINATION: "false"
     labels:
       mc-router.host: craftoria-dev.off-topic.chat
       mc-router.network: ovh-proxy_default
