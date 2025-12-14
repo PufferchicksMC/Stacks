@@ -47,6 +47,7 @@ services:
       MODRINTH_DOWNLOAD_DEPENDENCIES: required
     labels:
       mc-router.host: craftoria-dev.off-topic.chat
+      mc-router.network: ovh-proxy_default
 
   nginx:
     image: webdevops/php-nginx:8.4-alpine
