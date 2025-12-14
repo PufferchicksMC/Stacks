@@ -51,9 +51,9 @@ services:
       RCON_CMDS_STARTUP: |
         gamerule doFireTick false
         gamerule playerSleepingPercentage 0
+      SYNC_SKIP_NEWER_IN_DESTINATION: "false"
       MODRINTH_PROJECTS: "@/extras/modrinth-mods.txt"
       MODRINTH_DOWNLOAD_DEPENDENCIES: required
-      SYNC_SKIP_NEWER_IN_DESTINATION: "false"
     labels:
       mc-router.host: craftoria-dev.off-topic.chat
       mc-router.network: ovh-proxy_default
