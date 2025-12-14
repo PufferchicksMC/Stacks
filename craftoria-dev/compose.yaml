@@ -33,10 +33,10 @@ services:
         gamerule doFireTick false
         gamerule playerSleepingPercentage 0
       MODRINTH_PROJECTS: |
-        create-additional-logistics
-        echo-of-death
-        freeze-block
-        sculk-muffler
+        create-additional-logistics:mbCi448E
+        echo-of-death:HdyZLCDq
+        freeze-block:WfL7dS4O
+        sculk-muffler:pBOUMY5q
 
   nginx:
     image: webdevops/php-nginx:8.4-alpine
