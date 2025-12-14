@@ -43,6 +43,7 @@ services:
         freeze-block:WfL7dS4O
         luckperms:dKAPoPGd
         sculk-muffler:pBOUMY5q
+        sdlink:VADIv5pg
 
   nginx:
     image: webdevops/php-nginx:8.4-alpine
