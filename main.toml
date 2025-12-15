@@ -6,6 +6,7 @@ server = "ovh-cloud"
 links = [
   "https://craftoria-dev.off-topic.chat"
 ]
+poll_for_updates = true
 linked_repo = "minecraft"
 run_directory = "craftoria-dev"
 config_files = [
@@ -18,8 +19,9 @@ config_files = [
   { path = "config/bluemap/maps/world_the_end.conf", services = ["mc"], requires = "Redeploy" },
   { path = "config/simple-discord-link/simple-discord-link.toml", services = ["mc"], requires = "Redeploy" },
   { path = "config/simple-discord-link/simple-discord-compat.toml", services = ["mc"], requires = "Redeploy" },
-  { path = "config/chunky/config.json", services = ["mc"], requires = "Redeploy" },
-  { path = "config/chunkyborder/config.json", services = ["mc"], requires = "Redeploy" }
+  { path = "config/luckperms/luckperms.conf", services = ["mc"], requires = "Redeploy" },
+  { path = "config/luckperms/toml-storage/groups/admin.toml", services = ["mc"], requires = "Redeploy" },
+  { path = "config/luckperms/toml-storage/groups/default.toml", services = ["mc"], requires = "Redeploy" }
 ]
 pre_deploy.command = """
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
