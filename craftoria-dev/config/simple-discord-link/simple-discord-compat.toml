@@ -51,11 +51,18 @@ configVersion = 7
 #LuckPerms group syncing
 [luckperms]
 	#Sync Groups/Ranks to Minecraft from Discord Roles
-	syncToMinecraft = false
+	syncToMinecraft = true
 	#Sync Groups/Ranks to Discord roles from Minecraft
 	syncToDiscord = false
 	#List of Ranks and Roles that will be synced. Check the wiki on how to configure this
-	syncs = []
+	
+	[[luckperms.syncs]]
+		rank = "admin"
+		role = "${CFG_ADMIN_ROLE}"
+	
+	[[luckperms.syncs]]
+		rank = "default"
+		role = "${CFG_DEFAULT_ROLE}"
 
 #FTB Ranks Rank syncing
 [ftbranks]
