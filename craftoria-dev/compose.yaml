@@ -74,6 +74,7 @@ services:
     labels:
       traefik.enable: "true"
       traefik.http.routers.craftoria-dev.rule: Host(`craftoria-dev.off-topic.chat`)
+      traefik.http.routers.crftoria-dev.service: craftoria-dev
       traefik.http.services.craftoria-dev.loadbalancer.server.url: http://bm-craftoria-dev:80
 
   db:
