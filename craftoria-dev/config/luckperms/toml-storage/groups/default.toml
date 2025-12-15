@@ -1,16 +1,29 @@
-## Add your compose file here
-services:
-  hello_world:
-    image: hello-world
-    # networks:
-    #   - default
-    # ports:
-    #   - 3000:3000
-    # volumes:
-    #   - data:/data
+name = "default"
 
-# networks:
-#   default: {}
+[[permissions]]
+  permission = "displayname.Pufferchick"
+  value = true
 
-# volumes:
-#   data:
+[[permissions]]
+  permission = "weight.0"
+  value = true
+
+[[permissions]]
+  permission = "command.data.get"
+  value = true
+
+[[permissions]]
+  permission = "command.seed"
+  value = true
+
+[[permissions]]
+  permission = "command.tick"
+  value = true
+
+[[permissions]]
+  permission = "command.wits"
+  value = true
+
+[[permissions]]
+  permission = "ping"
+  value = true
