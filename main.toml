@@ -1,4 +1,84 @@
 [[stack]]
+name = "craftoria-dev"
+tags = ["mc-server"]
+[stack.config]
+server = "ovh-cloud"
+links = [
+  "https://craftoria-dev.off-topic.chat"
+]
+linked_repo = "minecraft"
+run_directory = "craftoria-dev"
+config_files = [
+  { path = "vhost.conf", services = ["nginx"], requires = "Redeploy" },
+  { path = "extras/modrinth-mods.txt", services = ["mc"], requires = "Redeploy" },
+  { path = "config/bluemap/core.conf", services = ["mc"], requires = "Redeploy" },
+  { path = "config/bluemap/storages/sql.conf", services = ["mc"], requires = "Redeploy" },
+  { path = "config/bluemap/maps/world.conf", services = ["mc"], requires = "Redeploy" },
+  { path = "config/bluemap/maps/world_the_nether.conf", services = ["mc"], requires = "Redeploy" },
+  { path = "config/bluemap/maps/world_the_end.conf", services = ["mc"], requires = "Redeploy" }
+]
+pre_deploy.command = """
+export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+
+STACK_NAME="craftoria"
+CLIENT_ID="[[INFISICAL_CLIENT_ID]]"
+CLIENT_SECRET="[[INFISICAL_CLIENT_SECRET]]"
+DOMAIN="[[INFISICAL_DOMAIN]]"
+PROJECT_ID="[[INFISICAL_PROJECT_ID]]"
+ENV="dev"
+
+INFISICAL_TOKEN=$( \
+  infisical login \
+    --method=universal-auth \
+    --client-id="$CLIENT_ID" \
+    --client-secret="$CLIENT_SECRET" \
+    --domain="$DOMAIN" \
+    --silent --plain)
+
+touch .env
+cp .env .env.original
+echo >> .env
+echo "UID=$(id -u mcserver)" >> .env
+echo "GID=$(id -g mcserver)" >> .env
+infisical export \
+  --format=dotenv \
+  --domain="$DOMAIN" \
+  --token="$INFISICAL_TOKEN" \
+  --projectId="$PROJECT_ID" \
+  --env="$ENV" \
+  --path="/$STACK_NAME" \
+>> .env
+
+chmod 600 .env
+echo ".env updated"
+"""
+post_deploy.command = """
+rm -f .env
+mv .env.original .env
+echo ".env restored"
+"""
+environment = """
+ALLOW_FLIGHT=true
+DIFFICULTY=hard
+ENABLE_ROLLING_LOGS=true
+ENFORCE_SECURE_PROFILE=false
+ENFORCE_WHITELIST=true
+EULA=true
+FORCE_GAMEMODE=true
+ICON=https://share.lxnq.to/-h8LgszoBka/pufferchick.png
+MAX_WORLD_SIZE=5000
+SNOOPER_ENABLED=false
+SPAWN_PROTECTION=0
+STOP_SERVER_ANNOUNCE_DELAY=300
+TZ=America/New_York
+USE_MEOWICE_FLAGS="true"
+REPLACE_ENV_VARIABLES="true"
+ENV_VARIABLE_PREFIX=CFG_
+"""
+
+##
+
+[[stack]]
 name = "create-smp"
 tags = ["mc-server"]
 [stack.config]
