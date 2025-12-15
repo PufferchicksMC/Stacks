@@ -72,9 +72,10 @@ services:
         source: /opt/minecraft/servers/craftoria-dev/bluemap/web
         target: /app
         read_only: true
-    env_file:
-      - path: ./.env
-        required: true
+    environment:
+      DATABASE: ${CFG_DB_NAME}
+      USERNAME: ${CFG_DB_USER}
+      PASSWORD: ${CFG_DB_PASSWORD}
     labels:
       traefik.enable: "true"
       traefik.http.routers.craftoria-dev.rule: Host(`craftoria-dev.off-topic.chat`)
