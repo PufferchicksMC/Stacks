@@ -57,6 +57,7 @@ services:
   nginx:
     image: webdevops/php-nginx:8.4-alpine
     restart: unless-stopped
+    user: ${UID}:${GID}
     networks:
       default:
       proxy:
