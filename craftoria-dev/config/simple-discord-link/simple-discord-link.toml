@@ -13,7 +13,7 @@
 #Config specific to the discord bot
 [botConfig]
 	#The token of the Discord Bot to use. This will be encrypted on first load. See https://sdlink.fdd-docs.com/installation/bot-creation/ to find this
-	botToken = ""
+	botToken = "${CFG_BOT_TOKEN}"
 	#Print the bot invite link to the console on startup
 	printInviteLink = true
 	#Use silent replies when Slash Commands are used
