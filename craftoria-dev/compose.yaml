@@ -61,7 +61,7 @@ services:
       default:
       proxy:
         aliases:
-          - bm-craftoria-dev
+          - craftoria-dev
     volumes:
       - type: bind
         source: ./vhost.conf
@@ -75,7 +75,7 @@ services:
       traefik.enable: "true"
       traefik.http.routers.craftoria-dev.rule: Host(`craftoria-dev.off-topic.chat`)
       traefik.http.routers.crftoria-dev.service: craftoria-dev
-      traefik.http.services.craftoria-dev.loadbalancer.server.url: http://bm-craftoria-dev:80
+      traefik.http.services.craftoria-dev.loadbalancer.server.url: http://craftoria-dev:80
 
   db:
     image: mariadb:11
