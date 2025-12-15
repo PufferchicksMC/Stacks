@@ -11,9 +11,9 @@ services:
       - db
     networks:
       default:
-      proxy:
+      router:
         aliases:
-          - mc-craftoria-dev
+          - craftoria-dev
     ports:
       - name: simplevoicechat
         target: 24454
@@ -52,7 +52,7 @@ services:
       MODRINTH_DOWNLOAD_DEPENDENCIES: required
     labels:
       mc-router.host: craftoria-dev.off-topic.chat
-      mc-router.network: ovh-proxy_default
+      mc-router.network: minecraft-shared_default
 
   nginx:
     image: webdevops/php-nginx:8.4-alpine
@@ -97,4 +97,7 @@ networks:
   default:
   proxy:
     name: ovh-proxy_default
+    external: true
+  router:
+    name: minecraft-shared_default
     external: true
