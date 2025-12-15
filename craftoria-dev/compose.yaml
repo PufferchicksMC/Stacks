@@ -73,8 +73,8 @@ services:
         read_only: true
     labels:
       traefik.enable: "true"
-      traefik.http.routers.craftoria-dev-bluemap.rule: Host(`bluemap.off-topic.chat`)
-      traefik.http.services.craftoria-dev-bluemap.loadbalancer.server.url: http://bm-craftoria-dev:80
+      traefik.http.routers.craftoria-dev.rule: Host(`craftoria-dev.off-topic.chat`)
+      traefik.http.services.craftoria-dev.loadbalancer.server.url: http://bm-craftoria-dev:80
 
   db:
     image: mariadb:11
