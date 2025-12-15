@@ -39,7 +39,7 @@ services:
       TYPE: Neoforge
       NEOFORGE_VERSION: 21.1.215
       MODE: creative
-      SEED: 123
+      SEED:  +EPAgfP7RQSphcoa
       MEMORY: 8G
       MOTD: |
         A %TYPE% server on %VERSION%
