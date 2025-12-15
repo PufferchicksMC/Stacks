@@ -3,6 +3,7 @@ services:
     container_name: craftoria-dev
     image: itzg/minecraft-server:java25-graalvm
     restart: unless-stopped
+    stop_grace_period: 630s
     user: ${UID}:${GID}
     tty: true
     stdin_open: true
