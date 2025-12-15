@@ -49,18 +49,18 @@
 #Config relating to the discord channels and webhooks to use with the mod
 [channelsAndWebhooks]
 	#A DIRECT link to an image to use as the avatar for server messages. Also used for embeds
-	serverAvatar = ""
+	serverAvatar = "${CFG_SERVER_AVATAR}"
 	#The name to display for Server messages when using Webhooks
-	serverName = "Minecraft Server"
+	serverName = "${CFG_SERVER_NAME}"
 
 	#Config relating to the discord channels to use with the mod
 	[channelsAndWebhooks.channels]
 		#REQUIRED! The ID of the channel to post in and relay messages from. This is still needed, even in webhook mode
-		chatChannelID = "0"
+		chatChannelID = "${CFG_CHAT_CHANNEL_ID}"
 		#If this ID is set, event messages will be posted in this channel instead of the chat channel
-		eventsChannelID = "0"
+		eventsChannelID = "${CFG_EVENTS_CHANNEL_ID}"
 		#If this ID is set, console messages sent after the bot started will be relayed here
-		consoleChannelID = "0"
+		consoleChannelID = "${CFG_CONSOLE_CHANNEL_ID}"
 
 	#Config relating to the discord Webhooks to use with the mod
 	[channelsAndWebhooks.webhooks]
@@ -82,7 +82,7 @@
 	#Use linked account names in Discord/Minecraft messages, instead of the default ones
 	useLinkedNames = true
 	#Show the discord name, username and role of the user that sent a message in Minecraft when the message is hovered
-	showDiscordInfo = false
+	showDiscordInfo = true
 	#Convert Discord to MC, and MC to Discord Formatting
 	formatting = true
 	#Should console messages be sent to the Console Channel
@@ -279,19 +279,19 @@
 #Manage access to your server, similar to whitelisting
 [accessControl]
 	#Enable Access Control
-	enabled = false
+	enabled = true
 	#Allow users to verify their accounts without access control. This setting is ignored if the above setting is set to true
 	optionalVerification = false
 	#Allows verification and un-verification via DM
 	allowVerifyInDm = true
 	#Does the player need to be a member of your discord to join
-	requireDiscordMembership = false
+	requireDiscordMembership = true
 	#Can players verify multiple Minecraft Accounts
 	allowMultipleAccounts = false
 	#Change the discord user nickname to their Minecraft name when their accounts are linked
 	changeDiscordNickname = false
 	#Optional: The player requires any of these roles to be able to join your server
-	requiredRoles = []
+	requiredRoles = ["${CFG_REQUIRED_ROLE}"]
 	#Optional: Players with these roles will never be allowed access to your server
 	deniedRoles = []
 	#Optional: Role name or ID to assign to verified player accounts
