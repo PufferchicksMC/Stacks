@@ -16,7 +16,7 @@ services:
           - craftoria-dev
     ports:
       - name: simplevoicechat
-        target: 24454
+        target: 24455
         published: 24455
         protocol: udp
     volumes:
