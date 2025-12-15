@@ -47,6 +47,10 @@ services:
       RCON_CMDS_STARTUP: |
         gamerule doFireTick false
         gamerule playerSleepingPercentage 0
+      RCON_CMDS_FIRST_CONNECT: |-
+        chunky pause
+      RCON_CMDS_LAST_DISCONNECT: |-
+        chunky continue
       SYNC_SKIP_NEWER_IN_DESTINATION: "false"
       MODRINTH_PROJECTS: "@/extras/modrinth-mods.txt"
       MODRINTH_DOWNLOAD_DEPENDENCIES: required
