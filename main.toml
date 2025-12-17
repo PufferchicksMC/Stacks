@@ -8,6 +8,7 @@ links = [
 ]
 poll_for_updates = true
 linked_repo = "minecraft"
+webhook_force_deploy = true
 run_directory = "craftoria-dev"
 config_files = [
   { path = "vhost.conf", services = ["nginx"], requires = "Redeploy" },
