@@ -53,7 +53,7 @@ services:
         source: tinyauth-data
         target: /data
     environment:
-      APP_URL: https://tinyauth.off-topic.chat
+      APP_URL: https://auth.off-topic.chat
       PROVIDERS_GITHUB_CLIENT_ID: ${PROVIDERS_GITHUB_CLIENT_ID}
       PROVIDERS_GITHUB_CLIENT_SECRET: ${PROVIDERS_GITHUB_CLIENT_SECRET}
       OAUTH_AUTO_REDIRECT: github
