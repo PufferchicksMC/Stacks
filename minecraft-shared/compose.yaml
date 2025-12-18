@@ -80,7 +80,7 @@ services:
         source: /opt/minecraft/servers
         target: /servers
     environment:
-      PUID: 1001
+      PUID: ${UID}
       PGID: ${GID}
       TZ: America/New_York
       DOCKER_MODS: linuxserver/mods:code-server-extension-arguments
