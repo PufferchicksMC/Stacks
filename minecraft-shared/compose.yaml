@@ -84,7 +84,12 @@ services:
       PGID: ${GID}
       TZ: America/New_York
       DOCKER_MODS: linuxserver/mods:code-server-extension-arguments
-      EXTENSIONS_GALLERY: {"serviceUrl":"https://marketplace.visualstudio.com/_apis/public/gallery","cacheUrl":"https://vscode.blob.core.windows.net/gallery/index","itemUrl":"https://marketplace.visualstudio.com/items"}
+      EXTENSIONS_GALLERY: |
+        {
+          "serviceUrl": "https://marketplace.visualstudio.com/_apis/public/gallery",
+          "cacheUrl": "https://vscode.blob.core.windows.net/gallery/index",
+          "itemUrl": "https://marketplace.visualstudio.com/items"
+        }
       VSCODE_EXTENSION_IDS: redhat.vscode-yaml|tamasfe.even-better-toml|sumneko.lua|SPGoding.datapack-language-server|MinecraftCommands.syntax-mcfunction|jackmacwindows.vscode-computercraft|lemmmy.computercraft-extension-pack|jackmacwindows.craftos-pc
     labels:
       traefik.enable: "true"
