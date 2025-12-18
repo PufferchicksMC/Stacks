@@ -37,12 +37,9 @@ services:
         read_only: true
     labels:
       traefik.enable: "true"
-      traefik.http.routers.mc-backup.rule: Host(`backup.off-topic.chat`)
-      traefik.http.routers.mc-backup.service: mc-backup
-      traefik.http.services.mc-backup.loadbalancer.server.url: http://mc-nginx:81
-      traefik.http.routers.mc-modpack.rule: Host(`modpack.off-topic.chat`)
-      traefik.http.routers.mc-modpack.service: mc-modpack
-      traefik.http.services.mc-modpack.loadbalancer.server.url: http://mc-nginx:82
+      traefik.http.routers.mc-files.rule: Host(`files.off-topic.chat`)
+      traefik.http.routers.mc-files.service: mc-files
+      traefik.http.services.mc-files.loadbalancer.server.url: http://mc-nginx:80
   
   tinyauth:
     image: ghcr.io/steveiliop56/tinyauth:v4
