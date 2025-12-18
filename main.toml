@@ -114,10 +114,7 @@ name = "minecraft-shared"
 tags = ["mc-server"]
 [stack.config]
 server = "ovh-cloud"
-links = [
-  "https://backup.off-topic.chat",
-  "https://modpack.off-topic.chat"
-]
+links = ["https://files.off-topic.chat"]
 poll_for_updates = true
 auto_update = true
 auto_update_all_services = true
