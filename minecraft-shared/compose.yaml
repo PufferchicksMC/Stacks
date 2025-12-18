@@ -65,6 +65,34 @@ services:
       traefik.http.services.mc-auth.loadbalancer.server.url: http://mc-auth:3000
       traefik.http.middlewares.mc-auth.forwardauth.address: http://mc-auth:3000/api/auth/traefik
 
+  codeserver:
+    image: lscr.io/linuxserver/openvscode-server:latest
+    restart: unless-stopped
+    networks:
+      proxy:
+        aliases:
+          - mc-codeserver
+    volumes:
+      - type: volume
+        source: codeserver-config
+        target: /config
+      - type: bind
+        source: /opt/minecraft/servers
+        target: /servers
+    environment:
+      PUID: 1001
+      PGID: ${GID}
+      TZ: America/New_York
+      DOCKER_MODS: linuxserver/mods:code-server-extension-arguments
+      EXTENSIONS_GALLERY: {"serviceUrl":"https://marketplace.visualstudio.com/_apis/public/gallery","cacheUrl":"https://vscode.blob.core.windows.net/gallery/index","itemUrl":"https://marketplace.visualstudio.com/items"}
+      VSCODE_EXTENSION_IDS: redhat.vscode-yaml|tamasfe.even-better-toml|sumneko.lua|SPGoding.datapack-language-server|MinecraftCommands.syntax-mcfunction|jackmacwindows.vscode-computercraft|lemmmy.computercraft-extension-pack|jackmacwindows.craftos-pc
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.mc-codeserver.rule: Host(`code-dev.off-topic.chat`)
+      traefik.http.routers.mc-codeserver.service: mc-codeserver
+      traefik.http.routers.mc-codeserver.middlewares: mc-auth
+      traefik.http.services.mc-codeserver.loadbalancer.server.url: http://mc-codeserver:3000
+
 networks:
   default:
   proxy:
@@ -72,4 +100,5 @@ networks:
     external: true
 
 volumes:
+  codeserver-config: null
   tinyauth-data: null
