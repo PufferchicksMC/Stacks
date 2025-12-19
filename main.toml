@@ -12,7 +12,7 @@ webhook_force_deploy = true
 run_directory = "craftoria"
 config_files = [
   { path = "vhost.conf" },
-  { path = "extras/modrinth-mods-txt" }
+  { path = "extras/modrinth-mods.txt" }
 ]
 pre_deploy.command = """
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
