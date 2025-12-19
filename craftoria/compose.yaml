@@ -1,16 +1,112 @@
-## Add your compose file here
 services:
-  hello_world:
-    image: hello-world
-    # networks:
-    #   - default
-    # ports:
-    #   - 3000:3000
-    # volumes:
-    #   - data:/data
+  mc:
+    container_name: craftoria
+    image: itzg/minecraft-server:java25-graalvm
+    restart: unless-stopped
+    stop_grace_period: 330s
+    user: ${UID}:${GID}
+    tty: true
+    stdin_open: true
+    depends_on:
+      - nginx
+      - db
+    networks:
+      default:
+      router:
+        aliases:
+          - craftoria
+    ports:
+      - name: simplevoicechat
+        target: 24454
+        published: 24454
+        protocol: udp
+    volumes:
+      - type: bind
+        source: /opt/minecraft/servers/craftoria
+        target: /data
+      - type: bind
+        source: ../../resources/craftoria/config
+        target: /config
+        read_only: true
+      - type: bind
+        source: ./extras
+        target: /extras
+        read_only: true
+    env_file:
+      - path: ./.env
+        required: true
+    environment:
+      VERSION: 1.21.1
+      TYPE: Neoforge
+      NEOFORGE_VERSION: 21.1.215
+      MODE: survival
+      SEED:  1fueXJ79TqqZYI8t
+      MEMORY: 8G
+      MOTD: |
+        A %TYPE% server on %VERSION%
+        running Craftoria 1.29.0
+      RCON_CMDS_STARTUP: |
+        gamerule doFireTick false
+        gamerule playerSleepingPercentage 0
+      RCON_CMDS_FIRST_CONNECT: |-
+        chunky pause
+      RCON_CMDS_LAST_DISCONNECT: |-
+        chunky continue
+      SYNC_SKIP_NEWER_IN_DESTINATION: "false"
+      MODRINTH_PROJECTS: "@/extras/modrinth-mods.txt"
+      MODRINTH_DOWNLOAD_DEPENDENCIES: required
+    labels:
+      mc-router.host: craftoria.off-topic.chat
+      mc-router.network: minecraft-shared_default
 
-# networks:
-#   default: {}
+  nginx:
+    image: webdevops/php-nginx:8.4-alpine
+    restart: unless-stopped
+    networks:
+      default:
+      proxy:
+        aliases:
+          - craftoria
+    volumes:
+      - type: bind
+        source: ./vhost.conf
+        target: /opt/docker/etc/nginx/vhost.conf
+        read_only: true
+      - type: bind
+        source: /opt/minecraft/servers/craftoria/bluemap/web
+        target: /app
+        read_only: true
+    environment:
+      DATABASE: ${CFG_DB_NAME}
+      USERNAME: ${CFG_DB_USER}
+      PASSWORD: ${CFG_DB_PASSWORD}
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.craftoria.rule: Host(`craftoria.off-topic.chat`)
+      traefik.http.routers.crftoria.service: craftoria
+      traefik.http.services.craftoria.loadbalancer.server.url: http://craftoria:80
 
-# volumes:
-#   data:
+  db:
+    image: mariadb:11
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: db
+        target: /var/lib/mysql
+    environment:
+      MARIADB_RANDOM_ROOT_PASSWORD: 1
+      MARIADB_DATABASE: ${CFG_DB_NAME}
+      MARIADB_USER: ${CFG_DB_USER}
+      MARIADB_PASSWORD: ${CFG_DB_PASSWORD}
+
+volumes:
+  db: null
+
+networks:
+  default:
+  proxy:
+    name: ovh-proxy_default
+    external: true
+  router:
+    name: minecraft-shared_default
+    external: true
