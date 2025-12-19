@@ -144,6 +144,8 @@ INFISICAL_TOKEN=$( \
 touch .env
 cp .env .env.original
 echo >> .env
+echo "UID=$(id -u codeserver)" >> .env
+echo "GID=$(id -g mcserver)" >> .env
 infisical export \
   --format=dotenv \
   --domain="$DOMAIN" \
