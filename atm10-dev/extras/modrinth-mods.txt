@@ -12,4 +12,5 @@ freeze-block:WfL7dS4O
 sculk-muffler:pBOUMY5q
 
 # Server+Client Additions
+etched:zi3Fnfmc
 tectonic:lWDHr9jE
