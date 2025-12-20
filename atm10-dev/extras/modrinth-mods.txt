@@ -1,16 +1,12 @@
-## Add your compose file here
-services:
-  hello_world:
-    image: hello-world
-    # networks:
-    #   - default
-    # ports:
-    #   - 3000:3000
-    # volumes:
-    #   - data:/data
+# Server essentials
+bluemap:8iJcPOHJ
+chunky:LuFhm4eU
+chunkyborder:Pj0tqKnE
+luckperms:dKAPoPGd
+sdlink:VADIv5pg
 
-# networks:
-#   default: {}
-
-# volumes:
-#   data:
+# Server+client additions
+create-additional-logistics:mbCi448E
+echo-of-death:HdyZLCDq
+freeze-block:WfL7dS4O
+sculk-muffler:pBOUMY5q
