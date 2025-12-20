@@ -32,10 +32,6 @@ services:
         source: ../../resources/atm10/extra_files
         target: /extra_files
         read_only: true
-      - type: bind
-        source: ./extras
-        target: /extras
-        read_only: true
     env_file:
       - path: ./.env
         required: true
