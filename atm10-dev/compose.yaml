@@ -28,6 +28,8 @@ services:
       VERSION: 1.21.1
       TYPE: Neoforge
       NEOFORGE_VERSION: 21.1.215
+      CURSEFORGE_FILES: |
+        https://www.curseforge.com/minecraft/modpacks/all-the-mods-10/files/7294979
       MODE: creative
       MEMORY: 8G
       MOTD: |
