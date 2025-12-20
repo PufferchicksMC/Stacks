@@ -35,6 +35,10 @@ services:
         source: /opt/minecraft/modpacks
         target: /app/modpack
         read_only: true
+      - type: bind
+        source: /opt/minecraft/resourcepacks
+        target: /app/resourcepacks
+        read_only: true
     labels:
       traefik.enable: "true"
       traefik.http.routers.mc-files.rule: Host(`files.off-topic.chat`)
