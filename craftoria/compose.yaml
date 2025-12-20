@@ -64,6 +64,7 @@ services:
       SYNC_SKIP_NEWER_IN_DESTINATION: "false"
       MODRINTH_PROJECTS: "@/extras/modrinth-mods.txt"
       MODRINTH_DOWNLOAD_DEPENDENCIES: required
+      RESOURCE_PACK: https://files.off-topic.chat/resourcepacks/craftoria-resourcepack.zip
     labels:
       mc-router.host: craftoria.off-topic.chat
       mc-router.network: minecraft-shared_default
