@@ -1,16 +1,58 @@
-## Add your compose file here
 services:
-  hello_world:
-    image: hello-world
-    # networks:
-    #   - default
-    # ports:
-    #   - 3000:3000
-    # volumes:
-    #   - data:/data
+  mc:
+    container_name: atm10-dev
+    image: itzg/minecraft-server:java25-graalvm
+    restart: unless-stopped
+    stop_grace_period: 60s
+    user: ${UID}:${GID}
+    tty: true
+    stdin_open: true
+    depends_on:
+      - nginx
+      - db
+    networks:
+      default:
+      router:
+        aliases:
+          - atm10-dev
+    ports:
+      - name: simplevoicechat
+        target: 24455
+        published: 24455
+        protocol: udp
+    volumes:
+      - type: bind
+        source: /opt/minecraft/servers/atm10-dev
+        target: /data
+    env_file:
+      - path: ./.env
+        required: true
+    environment:
+      VERSION: 1.21.1
+      TYPE: Neoforge
+      NEOFORGE_VERSION: 21.1.215
+      MODE: creative
+      MEMORY: 8G
+      MOTD: |
+        A %TYPE% server on %VERSION%
+        running ATM10 5.3.1
+      RCON_CMDS_STARTUP: |
+        gamerule doFireTick false
+        gamerule playerSleepingPercentage 0
+      RCON_CMDS_FIRST_CONNECT: |-
+        chunky pause
+      RCON_CMDS_LAST_DISCONNECT: |-
+        chunky continue
+      SYNC_SKIP_NEWER_IN_DESTINATION: "false"
+    labels:
+      mc-router.host: atm10-dev.off-topic.chat
+      mc-router.network: minecraft-shared_default
 
-# networks:
-#   default: {}
-
-# volumes:
-#   data:
+networks:
+  default:
+  proxy:
+    name: ovh-proxy_default
+    external: true
+  router:
+    name: minecraft-shared_default
+    external: true
