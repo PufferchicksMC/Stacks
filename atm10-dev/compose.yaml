@@ -25,9 +25,6 @@ services:
       - path: ./.env
         required: true
     environment:
-      VERSION: 1.21.1
-      TYPE: Neoforge
-      NEOFORGE_VERSION: 21.1.215
       MODPACK_PLATFORM: AUTO_CURSEFORGE
       CF_SLUG: all-the-mods-10
       CF_FILENAME_MATCHER: 5.3.1
