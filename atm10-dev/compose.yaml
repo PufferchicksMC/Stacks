@@ -7,6 +7,9 @@ services:
     user: ${UID}:${GID}
     tty: true
     stdin_open: true
+    depends_on:
+      - nginx
+      - db
     networks:
       default:
       router:
@@ -44,6 +47,49 @@ services:
     labels:
       mc-router.host: atm10-dev.off-topic.chat
       mc-router.network: minecraft-shared_default
+
+  nginx:
+    image: webdevops/php-nginx:8.4-alpine
+    restart: unless-stopped
+    networks:
+      default:
+      proxy:
+        aliases:
+          - atm10-dev
+    volumes:
+      - type: bind
+        source: ./vhost.conf
+        target: /opt/docker/etc/nginx/vhost.conf
+        read_only: true
+      - type: bind
+        source: /opt/minecraft/servers/atm10-dev/bluemap/web
+        target: /app
+        read_only: true
+    environment:
+      DATABASE: ${CFG_DB_NAME}
+      USERNAME: ${CFG_DB_USER}
+      PASSWORD: ${CFG_DB_PASSWORD}
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.atm10-dev.rule: Host(`atm10-dev.off-topic.chat`)
+      traefik.http.routers.atm10-dev.service: atm10-dev
+      traefik.http.services.atm10-dev.loadbalancer.server.url: http://atm10-dev:80
+
+  db:
+    image: mariadb:11
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: db
+        target: /var/lib/mysql
+    environment:
+      MARIADB_RANDOM_ROOT_PASSWORD: 1
+      MARIADB_DATABASE: ${CFG_DB_NAME}
+      MARIADB_USER: ${CFG_DB_USER}
+      MARIADB_PASSWORD: ${CFG_DB_PASSWORD}
+
+volumes:
+  db: null
 
 networks:
   default:
