@@ -54,7 +54,7 @@ services:
       MODRINTH_PROJECTS: "@/extra_files/modrinth-mods.txt"
       MODRINTH_DOWNLOAD_DEPENDENCIES: required
       APPLY_EXTRA_FILES: |
-        bluemap</extra_files/bluemap
+        bluemap</extra_files/bluemap/
     labels:
       mc-router.host: atm10-dev.off-topic.chat
       mc-router.network: minecraft-shared_default
