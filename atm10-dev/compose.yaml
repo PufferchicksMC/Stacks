@@ -29,6 +29,10 @@ services:
         target: /config
         read_only: true
       - type: bind
+        source: ../../resources/atm10/extra_files
+        target: /extra_files
+        read_only: true
+      - type: bind
         source: ./extras
         target: /extras
         read_only: true
@@ -53,6 +57,8 @@ services:
       SYNC_SKIP_NEWER_IN_DESTINATION: "false"
       MODRINTH_PROJECTS: "@/extras/modrinth-mods.txt"
       MODRINTH_DOWNLOAD_DEPENDENCIES: required
+      APPLY_EXTRA_FILES: |
+        bluemap<
     labels:
       mc-router.host: atm10-dev.off-topic.chat
       mc-router.network: minecraft-shared_default
