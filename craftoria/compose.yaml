@@ -1,7 +1,7 @@
 services:
   mc:
     container_name: craftoria
-    image: itzg/minecraft-server:java21
+    image: itzg/minecraft-server:java25-graalvm
     restart: unless-stopped
     stop_grace_period: 330s
     user: ${UID}:${GID}
