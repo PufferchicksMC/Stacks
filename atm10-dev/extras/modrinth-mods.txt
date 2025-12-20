@@ -5,8 +5,11 @@ chunkyborder:Pj0tqKnE
 luckperms:dKAPoPGd
 sdlink:VADIv5pg
 
-# Server+client additions
+# Community mods
 create-additional-logistics:mbCi448E
 echo-of-death:HdyZLCDq
 freeze-block:WfL7dS4O
 sculk-muffler:pBOUMY5q
+
+# Server+Client Additions
+tectonic:lWDHr9jE
