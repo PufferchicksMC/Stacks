@@ -41,7 +41,7 @@ services:
       NEOFORGE_VERSION: 21.1.215
       MODE: survival
       SEED:  1fueXJ79TqqZYI8t
-      MEMORY: 8G
+      MEMORY: 12G
       MOTD: |
         A %TYPE% server on %VERSION%
         running Craftoria 1.29.0
