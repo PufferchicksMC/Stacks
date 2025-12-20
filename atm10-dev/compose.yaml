@@ -52,6 +52,8 @@ services:
       RCON_CMDS_LAST_DISCONNECT: |-
         chunky continue
       SYNC_SKIP_NEWER_IN_DESTINATION: "false"
+      MODRINTH_PROJECTS: "@/extras/modrinth-mods.txt"
+      MODRINTH_DOWNLOAD_DEPENDENCIES: required
     labels:
       mc-router.host: atm10-dev.off-topic.chat
       mc-router.network: minecraft-shared_default
