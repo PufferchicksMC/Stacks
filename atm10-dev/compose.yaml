@@ -24,6 +24,14 @@ services:
       - type: bind
         source: /opt/minecraft/servers/atm10-dev
         target: /data
+      - type: bind
+        source: ../../resources/atm10/config
+        target: /config
+        read_only: true
+      - type: bind
+        source: ./extras
+        target: /extras
+        read_only: true
     env_file:
       - path: ./.env
         required: true
