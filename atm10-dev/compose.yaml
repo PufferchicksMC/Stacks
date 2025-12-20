@@ -7,9 +7,6 @@ services:
     user: ${UID}:${GID}
     tty: true
     stdin_open: true
-    depends_on:
-      - nginx
-      - db
     networks:
       default:
       router:
