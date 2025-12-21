@@ -1,23 +1,18 @@
 [[stack]]
-name = "craftoria"
+name = "atm10"
 tags = ["mc-server"]
 [stack.config]
 server = "ovh-cloud"
-links = [
-  "https://craftoria.off-topic.chat"
-]
+links = ["https://atm10.off-topic.chat"]
 poll_for_updates = true
 linked_repo = "minecraft"
 webhook_force_deploy = true
-run_directory = "craftoria"
-config_files = [
-  { path = "vhost.conf" },
-  { path = "extras/modrinth-mods.txt" }
-]
+run_directory = "atm10"
+config_files = [{ path = "vhost.conf" }]
 pre_deploy.command = """
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 
-STACK_NAME="craftoria"
+STACK_NAME="atm10"
 CLIENT_ID="[[INFISICAL_CLIENT_ID]]"
 CLIENT_SECRET="[[INFISICAL_CLIENT_SECRET]]"
 DOMAIN="[[INFISICAL_DOMAIN]]"
@@ -69,34 +64,34 @@ SPAWN_PROTECTION=0
 STOP_SERVER_ANNOUNCE_DELAY=300
 TZ=America/New_York
 USE_MEOWICE_FLAGS="true"
+USE_MEOWICE_GRAALVM_FLAGS="true"
 REPLACE_ENV_VARIABLES="true"
 ENV_VARIABLE_PREFIX=CFG_
 CFG_SERVER_AVATAR=https://share.lxnq.to/-h8LgszoBka/pufferchick.png
-CFG_SERVER_NAME=Craftoria SMP
+CFG_SERVER_NAME=ATM10
 """
 
 ##
 
 [[stack]]
-name = "craftoria-dev"
+name = "atm10-dev"
 tags = ["mc-server"]
 [stack.config]
 server = "ovh-cloud"
 links = [
-  "https://craftoria-dev.off-topic.chat"
+  "https://atm10-dev.off-topic.chat"
 ]
 poll_for_updates = true
 linked_repo = "minecraft"
 webhook_force_deploy = true
-run_directory = "craftoria-dev"
+run_directory = "atm10-dev"
 config_files = [
-  { path = "vhost.conf", services = ["nginx"], requires = "Redeploy" },
-  { path = "extras/modrinth-mods.txt", services = ["mc"], requires = "Redeploy" }
+  { path = "vhost.conf", services = ["mc"], requires = "Redeploy" }
 ]
 pre_deploy.command = """
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 
-STACK_NAME="craftoria"
+STACK_NAME="atm10"
 CLIENT_ID="[[INFISICAL_CLIENT_ID]]"
 CLIENT_SECRET="[[INFISICAL_CLIENT_SECRET]]"
 DOMAIN="[[INFISICAL_DOMAIN]]"
@@ -145,35 +140,14 @@ ICON=https://share.lxnq.to/-h8LgszoBka/pufferchick.png
 MAX_WORLD_SIZE=5000
 SNOOPER_ENABLED=false
 SPAWN_PROTECTION=0
-STOP_SERVER_ANNOUNCE_DELAY=300
+STOP_SERVER_ANNOUNCE_DELAY=30
 TZ=America/New_York
 USE_MEOWICE_FLAGS="true"
+USE_MEOWICE_GRAALVM_FLAGS="true"
 REPLACE_ENV_VARIABLES="true"
 ENV_VARIABLE_PREFIX=CFG_
 CFG_SERVER_AVATAR=https://share.lxnq.to/-h8LgszoBka/pufferchick.png
-CFG_SERVER_NAME=Craftoria SMP
-"""
-
-##
-
-[[stack]]
-name = "create-smp"
-tags = ["mc-server"]
-[stack.config]
-server = "ovh-cloud"
-links = [
-  "https://bluemap.off-topic.chat"
-]
-poll_for_updates = true
-auto_update = true
-auto_update_all_services = true
-linked_repo = "minecraft"
-run_directory = "create-smp"
-config_files = [{ path = "vhost.conf" }]
-environment = """
-DB_DATABASE=[[CREATE_DB_DATABASE]]
-DB_USERNAME=[[CREATE_DB_USERNAME]]
-DB_PASSWORD=[[CREATE_DB_PASSWORD]]
+CFG_SERVER_NAME=ATM10 Dev
 """
 
 ##
