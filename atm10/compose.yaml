@@ -41,7 +41,7 @@ services:
       CF_FILENAME_MATCHER: 5.4
       MODE: survival
       SEED: m0DKZe6vTUeHlG1q
-      MEMORY: 12G
+      MEMORY: 16G
       USE_MEOWICE_FLAGS: "true"
       USE_MEOWICE_GRAALVM_FLAGS: "true"
       #JVM_OPTS: -Xms8G -Xmx12G -XX:+UseZGC -XX:+ZGenerational -XX:SoftMaxHeapSize=10g -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:+PerfDisableSharedMem -XX:+UseDynamicNumberOfGCThreads
