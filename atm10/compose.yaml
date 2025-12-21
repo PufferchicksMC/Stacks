@@ -1,7 +1,7 @@
 services:
   mc:
     container_name: atm10
-    image: itzg/minecraft-server:java25-graalvm
+    image: itzg/minecraft-server:java21-graalvm
     restart: unless-stopped
     stop_grace_period: 300s
     user: ${UID}:${GID}
