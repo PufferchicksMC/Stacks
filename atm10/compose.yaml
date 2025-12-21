@@ -94,7 +94,7 @@ services:
     labels:
       traefik.enable: "true"
       traefik.http.routers.atm10.rule: Host(`atm10.off-topic.chat`)
-      traefik.http.routers.atm10.service: atm10-dev
+      traefik.http.routers.atm10.service: atm10
       traefik.http.services.atm10.loadbalancer.server.url: http://atm10:80
 
   db:
