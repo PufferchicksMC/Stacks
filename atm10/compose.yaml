@@ -40,7 +40,8 @@ services:
       CF_SLUG: all-the-mods-10
       CF_FILENAME_MATCHER: 5.3.1
       MODE: survival
-      MEMORY: 8G
+      SEED: m0DKZe6vTUeHlG1q
+      MEMORY: 12G
       MOTD: |
         Running %MODPACK_NAME% version %env:MODPACK_VERSION%
       RCON_CMDS_STARTUP: |
