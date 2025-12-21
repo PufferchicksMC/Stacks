@@ -47,7 +47,6 @@ services:
       RCON_CMDS_STARTUP: |
         gamerule doFireTick false
         gamerule playerSleepingPercentage 0
-        chunky world overworld
       RCON_CMDS_FIRST_CONNECT: |-
         chunky pause
       RCON_CMDS_LAST_DISCONNECT: |-
