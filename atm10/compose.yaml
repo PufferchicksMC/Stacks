@@ -47,6 +47,15 @@ services:
       RCON_CMDS_STARTUP: |
         gamerule doFireTick false
         gamerule playerSleepingPercentage 0
+        chunky world overworld
+        chunky border load
+        chunky start
+        chunky world the_nether
+        chunky border load
+        chunky start
+        chunky world the_end
+        chunky border load
+        chunky start
       RCON_CMDS_FIRST_CONNECT: |-
         chunky pause
       RCON_CMDS_LAST_DISCONNECT: |-
