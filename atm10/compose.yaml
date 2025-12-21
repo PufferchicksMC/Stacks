@@ -38,7 +38,7 @@ services:
     environment:
       MODPACK_PLATFORM: AUTO_CURSEFORGE
       CF_SLUG: all-the-mods-10
-      CF_FILENAME_MATCHER: 5.3.1
+      CF_FILENAME_MATCHER: 5.4
       MODE: survival
       SEED: m0DKZe6vTUeHlG1q
       MEMORY: 12G
