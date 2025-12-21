@@ -7,6 +7,8 @@ services:
     user: ${UID}:${GID}
     tty: true
     stdin_open: true
+    cpus: 4.0
+    cpu_shares: 2048
     depends_on:
       - nginx
       - db
