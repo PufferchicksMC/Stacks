@@ -40,7 +40,10 @@ services:
       CF_SLUG: all-the-mods-10
       CF_FILENAME_MATCHER: 5.3.1
       MODE: creative
+      SEED: m0DKZe6vTUeHlG1q
       MEMORY: 8G
+      USE_MEOWICE_FLAGS: "true"
+      USE_MEOWICE_GRAALVM_FLAGS: "true"
       MOTD: |
         Running %MODPACK_NAME% version %env:MODPACK_VERSION%
       RCON_CMDS_STARTUP: |
