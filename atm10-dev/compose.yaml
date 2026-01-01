@@ -59,7 +59,7 @@ services:
       MODRINTH_DOWNLOAD_DEPENDENCIES: required
       APPLY_EXTRA_FILES: |
         bluemap</extra_files/bluemap/
-        kubejs</extra_files/kubejs/
+        kubejs/server_scripts</extra_files/kubejs/server_scripts/
     labels:
       mc-router.host: atm10-dev.off-topic.chat
       mc-router.network: minecraft-shared_default
