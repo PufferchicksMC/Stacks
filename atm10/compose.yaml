@@ -57,6 +57,7 @@ services:
       RCON_CMDS_LAST_DISCONNECT: |-
         chunky continue
       SYNC_SKIP_NEWER_IN_DESTINATION: "false"
+      CURSEFORGE_FILES: "@/extra_files/curseforge-mods.txt"
       MODRINTH_PROJECTS: "@/extra_files/modrinth-mods.txt"
       MODRINTH_DOWNLOAD_DEPENDENCIES: required
       RESOURCE_PACK: https://files.off-topic.chat/resourcepacks/atm10-resourcepack.zip
