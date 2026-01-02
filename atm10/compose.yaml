@@ -43,7 +43,7 @@ services:
       CF_FILENAME_MATCHER: 5.4
       MODE: survival
       SEED: m0DKZe6vTUeHlG1q
-      MEMORY: 16G
+      MEMORY: 20G
       USE_MEOWICE_FLAGS: "true"
       USE_MEOWICE_GRAALVM_FLAGS: "true"
       MAX_TICK_TIME: -1
