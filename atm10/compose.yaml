@@ -58,11 +58,10 @@ services:
         chunky continue
       SYNC_SKIP_NEWER_IN_DESTINATION: "false"
       MODRINTH_PROJECTS: "@/extra_files/modrinth-mods.txt"
-      MODRINTH_DOWNLOAD_DEPENDENCIES: required
+      #MODRINTH_DOWNLOAD_DEPENDENCIES: required
       CURSEFORGE_FILES: "@/extra_files/curseforge-mods.txt"
       CF_IGNORE_MISSING_FILES: |-
         mods/create-1.21.1-6.0.8.jar
-        mods/create-1.21.1-6.0.9.jar
       RESOURCE_PACK: https://files.off-topic.chat/resourcepacks/atm10-resourcepack.zip
       APPLY_EXTRA_FILES: |
         bluemap</extra_files/bluemap/
