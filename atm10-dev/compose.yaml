@@ -59,6 +59,11 @@ services:
       APPLY_EXTRA_FILES: |
         bluemap</extra_files/bluemap/
         kubejs</extra_files/kubejs/
+        kubejs/assets/puffercoin/textures/item</extra_files/kubejs/assets/puffercoin/textures/item/
+        kubejs/client_scripts</extra_files/kubejs/client_scripts/
+        kubejs/server_scripts</extra_files/kubejs/server_scripts/
+        kubejs/startup_scripts</extra_files/kubejs/server_scripts/
+
     labels:
       mc-router.host: atm10-dev.off-topic.chat
       mc-router.network: minecraft-shared_default
