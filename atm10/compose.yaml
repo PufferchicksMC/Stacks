@@ -46,7 +46,6 @@ services:
       MEMORY: 20G
       USE_MEOWICE_FLAGS: "true"
       USE_MEOWICE_GRAALVM_FLAGS: "true"
-      MAX_TICK_TIME: -1
       MOTD: |
         Running %MODPACK_NAME% version %env:MODPACK_VERSION%
       RCON_CMDS_STARTUP: |
