@@ -24,18 +24,6 @@ services:
       - type: bind
         source: /opt/minecraft/servers/atm10-dev
         target: /data
-      - type: bind
-        source: ../../resources/atm10-dev/config
-        target: /config
-        read_only: true
-      - type: bind
-        source: ../../resources/atm10-dev/extra_files
-        target: /extra_files
-        read_only: true
-      - type: bind
-        source: ../../resources/atm10-dev/kubejs
-        target: /kubejs
-        read_only: true
     env_file:
       - path: ./.env
         required: true
