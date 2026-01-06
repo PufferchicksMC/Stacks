@@ -32,6 +32,10 @@ services:
         source: ../../resources/atm10-dev/extra_files
         target: /extra_files
         read_only: true
+      - type: bind
+        source: ../../resources/atm10-dev/kubejs
+        target: /kubejs
+        read_only: true
     env_file:
       - path: ./.env
         required: true
@@ -61,11 +65,11 @@ services:
         bluemap/web/assets</extra_files/bluemap/web/assets/
         bluemap/web/css</extra_files/bluemap/web/css/
         bluemap/web/js</extra_files/bluemap/web/js/
-        kubejs</extra_files/kubejs/
-        kubejs/assets/puffercoin/textures/item</extra_files/kubejs/assets/puffercoin/textures/item/
-        kubejs/client_scripts</extra_files/kubejs/client_scripts/
-        kubejs/server_scripts</extra_files/kubejs/server_scripts/
-        kubejs/startup_scripts</extra_files/kubejs/startup_scripts/
+        kubejs</kubejs/
+        kubejs/assets/puffercoin/textures/item</kubejs/assets/puffercoin/textures/item/
+        kubejs/client_scripts</kubejs/client_scripts/
+        kubejs/server_scripts</kubejs/server_scripts/
+        kubejs/startup_scripts</kubejs/startup_scripts/
 
     labels:
       mc-router.host: atm10-dev.off-topic.chat
