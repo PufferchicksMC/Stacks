@@ -26,14 +26,6 @@ services:
       - type: bind
         source: /opt/minecraft/servers/atm10
         target: /data
-      - type: bind
-        source: ../../resources/atm10/config
-        target: /config
-        read_only: true
-      - type: bind
-        source: ../../resources/atm10/extra_files
-        target: /extra_files
-        read_only: true
     env_file:
       - path: ./.env
         required: true
@@ -41,6 +33,7 @@ services:
       MODPACK_PLATFORM: AUTO_CURSEFORGE
       CF_SLUG: all-the-mods-10
       CF_FILENAME_MATCHER: 5.4
+      PACKWIZ_URL: https://files.off-topic.chat/modpack/atm10/pack.toml
       MODE: survival
       SEED: m0DKZe6vTUeHlG1q
       MEMORY: 20G
@@ -56,11 +49,6 @@ services:
       RCON_CMDS_LAST_DISCONNECT: |-
         chunky continue
       SYNC_SKIP_NEWER_IN_DESTINATION: "false"
-      MODRINTH_PROJECTS: "@/extra_files/modrinth-mods.txt"
-      #MODRINTH_DOWNLOAD_DEPENDENCIES: required
-      CURSEFORGE_FILES: "@/extra_files/curseforge-mods.txt"
-      APPLY_EXTRA_FILES: |
-        bluemap</extra_files/bluemap/
     labels:
       mc-router.host: atm10.off-topic.chat
       mc-router.network: minecraft-shared_default
