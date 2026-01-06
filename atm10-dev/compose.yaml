@@ -59,7 +59,6 @@ services:
       RCON_CMDS_LAST_DISCONNECT: |-
         chunky continue
       SYNC_SKIP_NEWER_IN_DESTINATION: "false"
-
     labels:
       mc-router.host: atm10-dev.off-topic.chat
       mc-router.network: minecraft-shared_default
