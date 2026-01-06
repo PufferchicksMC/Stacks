@@ -58,9 +58,9 @@ services:
       MODRINTH_PROJECTS: "@/extra_files/modrinth-mods.txt"
       APPLY_EXTRA_FILES: |
         bluemap</extra_files/bluemap/
-        bluemap/web/assets</bluemap/web/assets/
-        bluemap/web/css</bluemap/web/css/
-        bluemap/web/js</bluemap/web/js/
+        bluemap/web/assets</extra_files/bluemap/web/assets/
+        bluemap/web/css</extra_files/bluemap/web/css/
+        bluemap/web/js</extra_files/bluemap/web/js/
         kubejs</extra_files/kubejs/
         kubejs/assets/puffercoin/textures/item</extra_files/kubejs/assets/puffercoin/textures/item/
         kubejs/client_scripts</extra_files/kubejs/client_scripts/
