@@ -59,7 +59,6 @@ services:
       MODRINTH_PROJECTS: "@/extra_files/modrinth-mods.txt"
       #MODRINTH_DOWNLOAD_DEPENDENCIES: required
       CURSEFORGE_FILES: "@/extra_files/curseforge-mods.txt"
-      RESOURCE_PACK: https://files.off-topic.chat/resourcepacks/atm10-resourcepack.zip
       APPLY_EXTRA_FILES: |
         bluemap</extra_files/bluemap/
     labels:
