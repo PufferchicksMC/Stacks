@@ -37,7 +37,6 @@ services:
       MODE: survival
       SEED: m0DKZe6vTUeHlG1q
       MEMORY: 20G
-      MAX_TICK_TIME: -1
       USE_MEOWICE_FLAGS: "true"
       USE_MEOWICE_GRAALVM_FLAGS: "true"
       MOTD: |
