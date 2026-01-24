@@ -81,6 +81,7 @@ services:
   db:
     image: mariadb:11
     restart: unless-stopped
+    command: --max_allowed_packet=134217728
     volumes:
       - type: volume
         source: db
