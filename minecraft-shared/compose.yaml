@@ -105,7 +105,7 @@ services:
   sftp:
     image: atmoz/sftp:latest
     restart: unless-stopped
-    command: mcadmin:test:1002:1002
+    command: mcadmin::1002:1002
     ports:
       - 25522:22
     volumes:
