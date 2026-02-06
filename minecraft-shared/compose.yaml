@@ -101,6 +101,24 @@ services:
       traefik.http.routers.mc-codeserver.service: mc-codeserver
       traefik.http.routers.mc-codeserver.middlewares: mc-auth
       traefik.http.services.mc-codeserver.loadbalancer.server.url: http://mc-codeserver:3000
+  
+  sftp:
+    image: atmoz/sftp:latest
+    restart: unless-stopped
+    command: mcadmin::1002:1002:upload
+    ports:
+      - name: sftp
+        target: 22
+        published: 25522
+        protocol: udp
+    volumes:
+      - type: bind
+        source: /srv/uploads/incoming
+        target: /home/mcadmin/upload
+      - type: bind
+        source: /home/mcadmin/.ssh/authorized_keys
+        target: /home/mcadmin/.ssh/authorized_keys
+        read_only: true
 
 networks:
   default:
