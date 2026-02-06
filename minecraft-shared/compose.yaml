@@ -105,13 +105,13 @@ services:
   sftp:
     image: atmoz/sftp:latest
     restart: unless-stopped
-    command: mcadmin:test:1002:1002:upload
+    command: mcadmin:test:1002:1002
     ports:
       - 25522:22
     volumes:
       - type: bind
-        source: /srv/uploads/incoming
-        target: /home/mcadmin/upload
+        source: /srv/uploads/mcadmin
+        target: /home/mcadmin/share
       - type: bind
         source: /home/mcadmin/.ssh/authorized_keys
         target: /home/mcadmin/.ssh/keys
