@@ -107,9 +107,7 @@ services:
     restart: unless-stopped
     command: mcadmin::1002:1002:upload
     ports:
-      - name: sftp
-        target: 22
-        published: 25522
+      - 25522:22
     volumes:
       - type: bind
         source: /srv/uploads/incoming
