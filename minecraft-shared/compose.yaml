@@ -113,7 +113,7 @@ services:
         source: /srv/uploads/mcadmin
         target: /home/mcadmin/share
       - type: bind
-        source: /home/mcadmin/.ssh/authorized_keys
+        source: /home/mcadmin/.ssh/
         target: /home/mcadmin/.ssh/keys
         read_only: true
 
