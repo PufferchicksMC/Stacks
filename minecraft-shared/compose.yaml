@@ -110,7 +110,6 @@ services:
       - name: sftp
         target: 22
         published: 25522
-        protocol: udp
     volumes:
       - type: bind
         source: /srv/uploads/incoming
