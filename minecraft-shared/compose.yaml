@@ -114,7 +114,7 @@ services:
         target: /home/mcadmin/upload
       - type: bind
         source: /home/mcadmin/.ssh/authorized_keys
-        target: /home/mcadmin/.ssh/authorized_keys
+        target: /home/mcadmin/.ssh/keys
         read_only: true
 
 networks:
