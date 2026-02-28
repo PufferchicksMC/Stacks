@@ -52,6 +52,9 @@ services:
       proxy:
         aliases:
           - mc-auth
+    dns:
+      - 1.1.1.1
+      - 8.8.8.8
     volumes:
       - type: volume
         source: tinyauth-data
