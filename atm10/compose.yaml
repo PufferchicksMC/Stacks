@@ -30,11 +30,11 @@ services:
     environment:
       MODPACK_PLATFORM: AUTO_CURSEFORGE
       CF_SLUG: all-the-mods-10
-      CF_FILENAME_MATCHER: 5.5
+      CF_FILENAME_MATCHER: 6.0
       PACKWIZ_URL: https://files.off-topic.chat/modpack/atm10/pack.toml
       MODE: survival
       SEED: m0DKZe6vTUeHlG1q
-      MEMORY: 20G
+      MEMORY: 12G
       USE_MEOWICE_FLAGS: "true"
       USE_MEOWICE_GRAALVM_FLAGS: "true"
       MOTD: |
